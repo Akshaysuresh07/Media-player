@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import { Card,Modal } from 'react-bootstrap'
-import { saveHistoryAPI } from '../services/allApi';
+import { removeVideoAPI, saveHistoryAPI } from '../services/allApi';
 
 
-function VideoCard({displayData}) {
+function VideoCard({displayData,setDeleteVideoResponse}) {
 
   const [show, setShow] = useState(false);
 
@@ -27,6 +27,13 @@ function VideoCard({displayData}) {
     
     
     }
+    const removeVideo=async(id)=>{
+     const res=await removeVideoAPI(id)
+      setDeleteVideoResponse(res.data)
+      setShow(false)
+    }
+
+    
   return (
     <>
     
@@ -35,7 +42,7 @@ function VideoCard({displayData}) {
     <Card.Body>
       <Card.Title className='d-flex justify-content-between '>
       <p className="fw-2 ">{displayData?.caption}</p>
-      <button className='btn '><i className='fa-solid fa-trash text-danger'></i></button>
+      <button onClick={()=>removeVideo(displayData.id)} className='btn '><i className='fa-solid fa-trash text-danger'></i></button>
       </Card.Title>
       
    

@@ -6,9 +6,12 @@ import { getAllVideosAPI } from '../services/allApi'
 
 function View({uploadvideoResponse}) {
   const [allvideos,setAllVideos]=useState([])
+  //state lifting from video card
+  const [deleteVideoResponse,setDeleteVideoResponse]=useState("")
+
   const getAllVideos =async()=>{
     const result=await getAllVideosAPI()
-    console.log(result);
+    // console.log(result);
     if(result?.status===200){
       setAllVideos(result.data);
     }
@@ -16,8 +19,8 @@ function View({uploadvideoResponse}) {
   useEffect(()=>{
     getAllVideos()
 
-  },[uploadvideoResponse])
-  console.log(allvideos);
+  },[uploadvideoResponse,deleteVideoResponse])
+  // console.log(allvideos);
 
   return (
     <>
@@ -27,7 +30,7 @@ function View({uploadvideoResponse}) {
     
     
       <Col key={index} className='mb-4' sm={12} md={6} lg={4}>
-      <VideoCard displayData={video} />
+      <VideoCard displayData={video} setDeleteVideoResponse={setDeleteVideoResponse} />
     
     
       </Col>

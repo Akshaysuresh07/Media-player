@@ -1,12 +1,30 @@
 import React ,{useState} from 'react'
 import { Modal,Button,FloatingLabel,Form } from 'react-bootstrap'
+import { addCategoryAPI } from '../services/allApi';
 
 
 function Category() {
   const [show, setShow] = useState(false);
+  const [categoryName, setCategoryName] = useState('');
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () =>{ 
+    setShow(true);
+  setCategoryName('')
+  }
+  const createCategory=async()=>{
+    if(categoryName){
+      const result=await addCategoryAPI({categoryName,allvideos:[]})
+        handleClose()
+ 
+    }
+    else{
+      alert("Please fill the category name")
+    }
+  
+  
+
+  }
 
   return (
     <>  <div className='d-flex'>
@@ -24,14 +42,14 @@ function Category() {
         label="category name"
         className="mb-3"
       >
-        <Form.Control type="text" placeholder="category" />
+        <Form.Control value={categoryName} onChange={e=>setCategoryName(e.target.value)} type="text" placeholder="category" />
       </FloatingLabel>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button style={{background:'#4169e1'}} variant="primary" onClick={handleClose}>
+          <Button style={{background:'#4169e1'}} variant="primary" onClick={createCategory}>
             Add category
           </Button>
         </Modal.Footer>

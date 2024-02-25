@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getHistoryAPI } from '../services/allApi'
+import { getHistoryAPI, removeHistoryAPI } from '../services/allApi'
 
 function Watch() {
   const [history, setHistory] = useState([])
@@ -16,6 +16,13 @@ function Watch() {
   useEffect(() => {
     getAllHistory()
   })
+  const removeHistory=async(id)=>{
+    await removeHistoryAPI(id)
+    getAllHistory()
+    
+    
+
+  }
   return (
    <>
     <div className="d-flex justify-content-between">
@@ -24,9 +31,9 @@ function Watch() {
 
     </div>
 
-    <table  style={{background:'white'}}   className='table mt-5 mb-5 bg-white'>
+    <table  className='table mt-5 mb-5 '>
     <thead>
-      <tr style={{background:'white'}}>
+      <tr >
         <th className='text-white'>#</th>
         <th>Video Caption</th>
         <th>Video Link</th>
@@ -42,7 +49,7 @@ function Watch() {
           <td>{video?.caption}</td>
           <td><a href={video?.youtubeLink} target='blank'></a>{video.youtubeLink}</td>
           <td>{video?.timeStamp}</td>
-          <td><i className='fa-solid fa-trash text-danger'></i></td>
+          <td><i onClick={()=>removeHistory(video.id)} className='fa-solid fa-trash text-danger'></i></td>
         </tr>
       ))
       :
