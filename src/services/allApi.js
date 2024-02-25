@@ -16,3 +16,12 @@ export const saveHistoryAPI=async (videoDetails)=>{
 export const getHistoryAPI=async()=>{
     return await commonApi('GET',`${serverUrl}/history`,"")
 }
+export const removeHistoryAPI=async(id)=>{
+    return await  commonApi('DELETE',`${serverUrl}/history/${id}`,{})
+}
+export const removeVideoAPI=async(id)=>{
+    return await  commonApi('DELETE',`${serverUrl}/videos/${id}`,{})
+}
+export const addCategoryAPI=async(category)=>{
+    return await commonApi('POST',`${serverUrl}/categories`,category)
+}
