@@ -32,7 +32,7 @@ function Add({setUploadvideoResponse}) {
     const {caption,imageURL,youtubeLink}=uploadvideo
     if (caption && imageURL && youtubeLink) {
       const result = await uploadVideoAPI(uploadvideo);
-      console.log(result);
+      // console.log(result);
       if (result.status === 201){
         alert("Video uploaded successfully");
         setUploadvideoResponse(result.data);

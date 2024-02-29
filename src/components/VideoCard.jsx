@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React,{useState} from 'react'
 import { Card,Modal } from 'react-bootstrap'
 import { removeVideoAPI, saveHistoryAPI } from '../services/allApi';
 
 
-function VideoCard({displayData,setDeleteVideoResponse}) {
+function VideoCard({displayData,setDeleteVideoResponse,insideCategory}) {
 
   const [show, setShow] = useState(false);
 
@@ -22,7 +23,7 @@ function VideoCard({displayData,setDeleteVideoResponse}) {
       second:'2-digit'
 
     }).format(timeData)
-    console.log(timeData);
+    // console.log(timeData);
     await saveHistoryAPI({caption,youtubeLink,timeStamp})
     
     
@@ -32,17 +33,22 @@ function VideoCard({displayData,setDeleteVideoResponse}) {
       setDeleteVideoResponse(res.data)
       setShow(false)
     }
+    //dragStarted
+    const dragStarted=(e,Vid)=>{
+      console.log(`drag started with video id: ${Vid}`);
+      e.dataTransfer.setData("videoId",Vid)
+    }
 
     
   return (
     <>
     
-    <Card className='shadow'>
+    <Card draggable="true" onDragStart={(e)=>dragStarted(e,displayData?.id)} className='shadow'>
     <Card.Img style={{cursor:'pionter',minHeight:'150px',maxHeight:'150px'}} onClick={handleShow} variant="top" src={displayData?.imageURL} />
     <Card.Body>
       <Card.Title className='d-flex justify-content-between '>
       <p className="fw-2 ">{displayData?.caption}</p>
-      <button onClick={()=>removeVideo(displayData.id)} className='btn '><i className='fa-solid fa-trash text-danger'></i></button>
+    {!insideCategory&&  <button onClick={()=>removeVideo(displayData.id)} className='btn '><i className='fa-solid fa-trash text-danger'></i></button>}
       </Card.Title>
       
    
@@ -60,6 +66,7 @@ function VideoCard({displayData,setDeleteVideoResponse}) {
   </Modal.Body>
 
 </Modal>
+
     </>
    
   )

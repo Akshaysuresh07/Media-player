@@ -5,6 +5,7 @@ import View from '../components/View'
 import Category from '../components/Category'
 
 function Home() {
+  const[removeCategoryVideoResponse,setRemoveCategoryVideoResponse]=useState("")
   const [uploadvideoResponse, setUploadvideoResponse] = useState("")
   return (
     <>
@@ -19,16 +20,16 @@ function Home() {
         <div className='col-lg-6'>
 
           <h3>All videos</h3>
-          <View uploadvideoResponse={uploadvideoResponse} />
+          <View uploadvideoResponse={uploadvideoResponse } setRemoveCategoryVideoResponse={setRemoveCategoryVideoResponse} />
 
         </div>
         <div className='col-lg-6'>
-          <div className='d-flex justify-content-around'>
+        
 
-            <h3>All Categories</h3>
-            <Category />
+           
+            <Category removeCategoryVideoResponse={removeCategoryVideoResponse} />
           </div>
-        </div>
+   
       </div>
 
     </>

@@ -25,3 +25,21 @@ export const removeVideoAPI=async(id)=>{
 export const addCategoryAPI=async(category)=>{
     return await commonApi('POST',`${serverUrl}/categories`,category)
 }
+export const getCategoriesAPI=async()=>{
+    return await commonApi('GET',`${serverUrl}/categories`)
+}
+export const removeCategoryAPI=async(categoryId)=>{
+    return await commonApi('DELETE',`${serverUrl}/categories/${categoryId}`,{})
+
+}
+//getg single vidoe api
+export const getSingleVideoAPI=async(videoId)=>{
+    return await commonApi('GET',`${serverUrl}/videos/${videoId}`,'')
+}
+//update categories api
+export const updateCategoryAPI=async(categoryId,updatedCategoryDetails)=>{
+    return await commonApi('PUT',`${serverUrl}/categories/${categoryId}`,updatedCategoryDetails)
+}
+export const getSingleCategoryAPI=async(categoryId)=>{
+    return await commonApi('GET',`${serverUrl}/categories/${categoryId}`,'')
+}
