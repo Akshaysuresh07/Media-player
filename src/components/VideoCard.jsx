@@ -4,7 +4,11 @@ import { Card,Modal } from 'react-bootstrap'
 import { removeVideoAPI, saveHistoryAPI } from '../services/allApi';
 
 
+<<<<<<< HEAD
 function VideoCard({displayData,setDeleteVideoResponse,insideCategory}) {
+=======
+function VideoCard({displayData,setDeleteVideoResponse}) {
+>>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
 
   const [show, setShow] = useState(false);
 
@@ -33,11 +37,14 @@ function VideoCard({displayData,setDeleteVideoResponse,insideCategory}) {
       setDeleteVideoResponse(res.data)
       setShow(false)
     }
+<<<<<<< HEAD
     //dragStarted
     const dragStarted=(e,Vid)=>{
       console.log(`drag started with video id: ${Vid}`);
       e.dataTransfer.setData("videoId",Vid)
     }
+=======
+>>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
 
     
   return (
@@ -48,7 +55,11 @@ function VideoCard({displayData,setDeleteVideoResponse,insideCategory}) {
     <Card.Body>
       <Card.Title className='d-flex justify-content-between '>
       <p className="fw-2 ">{displayData?.caption}</p>
+<<<<<<< HEAD
     {!insideCategory&&  <button onClick={()=>removeVideo(displayData.id)} className='btn '><i className='fa-solid fa-trash text-danger'></i></button>}
+=======
+      <button onClick={()=>removeVideo(displayData.id)} className='btn '><i className='fa-solid fa-trash text-danger'></i></button>
+>>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
       </Card.Title>
       
    

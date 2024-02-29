@@ -24,6 +24,7 @@ export const removeVideoAPI=async(id)=>{
 }
 export const addCategoryAPI=async(category)=>{
     return await commonApi('POST',`${serverUrl}/categories`,category)
+<<<<<<< HEAD
 }
 export const getCategoriesAPI=async()=>{
     return await commonApi('GET',`${serverUrl}/categories`)
@@ -42,4 +43,6 @@ export const updateCategoryAPI=async(categoryId,updatedCategoryDetails)=>{
 }
 export const getSingleCategoryAPI=async(categoryId)=>{
     return await commonApi('GET',`${serverUrl}/categories/${categoryId}`,'')
+=======
+>>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
 }
