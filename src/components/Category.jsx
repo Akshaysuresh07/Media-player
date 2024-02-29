@@ -1,21 +1,14 @@
-<<<<<<< HEAD
 
 import React, { useEffect, useState } from 'react'
 import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap'
 import { addCategoryAPI, getCategoriesAPI, getSingleVideoAPI, removeCategoryAPI, updateCategoryAPI } from '../services/allApi';
 import VideoCard from './VideoCard';
-=======
-import React ,{useState} from 'react'
-import { Modal,Button,FloatingLabel,Form } from 'react-bootstrap'
-import { addCategoryAPI } from '../services/allApi';
->>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
 
 
 
 function Category({removeCategoryVideoResponse}) {
   const [show, setShow] = useState(false);
   const [categoryName, setCategoryName] = useState('');
-<<<<<<< HEAD
   const [allCategories, setAllCategories] = useState([])
 
   const handleClose = () => setShow(false);
@@ -28,27 +21,6 @@ function Category({removeCategoryVideoResponse}) {
       await addCategoryAPI({ categoryName, allvideos: [] })
       handleClose()
       getAllCategories()
-=======
-
-  const handleClose = () => setShow(false);
-  const handleShow = () =>{ 
-    setShow(true);
-  setCategoryName('')
-  }
-  const createCategory=async()=>{
-    if(categoryName){
-      const result=await addCategoryAPI({categoryName,allvideos:[]})
-        handleClose()
- 
-    }
-    else{
-      alert("Please fill the category name")
-    }
-  
-  
-
-  }
->>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
 
     }
     else {
@@ -135,7 +107,6 @@ function Category({removeCategoryVideoResponse}) {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-<<<<<<< HEAD
           <FloatingLabel
             controlId="floatingInput"
             label="category name"
@@ -143,25 +114,12 @@ function Category({removeCategoryVideoResponse}) {
           >
             <Form.Control value={categoryName} onChange={e => setCategoryName(e.target.value)} type="text" placeholder="category" />
           </FloatingLabel>
-=======
-        <FloatingLabel
-        controlId="floatingInput"
-        label="category name"
-        className="mb-3"
-      >
-        <Form.Control value={categoryName} onChange={e=>setCategoryName(e.target.value)} type="text" placeholder="category" />
-      </FloatingLabel>
->>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-<<<<<<< HEAD
           <Button style={{ background: '#4169e1' }} variant="primary" onClick={createCategory}>
-=======
-          <Button style={{background:'#4169e1'}} variant="primary" onClick={createCategory}>
->>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
             Add category
           </Button>
         </Modal.Footer>

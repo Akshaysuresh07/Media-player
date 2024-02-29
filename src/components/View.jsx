@@ -5,7 +5,6 @@ import VideoCard from './VideoCard'
 import { getAllVideosAPI, getSingleCategoryAPI, updateCategoryAPI } from '../services/allApi'
 
 
-<<<<<<< HEAD
 function View({ uploadvideoResponse,setRemoveCategoryVideoResponse }) {
   const [allvideos, setAllVideos] = useState([])
   //state lifting from video card
@@ -15,24 +14,12 @@ function View({ uploadvideoResponse,setRemoveCategoryVideoResponse }) {
     const result = await getAllVideosAPI()
     // console.log(result);
     if (result?.status === 200) {
-=======
-function View({uploadvideoResponse}) {
-  const [allvideos,setAllVideos]=useState([])
-  //state lifting from video card
-  const [deleteVideoResponse,setDeleteVideoResponse]=useState("")
-
-  const getAllVideos =async()=>{
-    const result=await getAllVideosAPI()
-    // console.log(result);
-    if(result?.status===200){
->>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
       setAllVideos(result.data);
     }
   }
   useEffect(() => {
     getAllVideos()
 
-<<<<<<< HEAD
   }, [uploadvideoResponse, deleteVideoResponse])
   // console.log(allvideos);
   const dragOverView = (e) => {
@@ -68,29 +55,6 @@ function View({uploadvideoResponse}) {
         }
       </Row>
 
-=======
-  },[uploadvideoResponse,deleteVideoResponse])
-  // console.log(allvideos);
-
-  return (
-    <>
-    
-    <Row className=' rounded m-2'>
-    {allvideos?.length>0?allvideos.map((video,index)=>(
-    
-    
-      <Col key={index} className='mb-4' sm={12} md={6} lg={4}>
-      <VideoCard displayData={video} setDeleteVideoResponse={setDeleteVideoResponse} />
-    
-    
-      </Col>
-    ))
-    :
-    <div className='text-danger fw-bolder'> no videos are uploaded yet!!..</div>
-    }
-    </Row>
-    
->>>>>>> 63e48496ab6b9274bde274a7bddf2d2d62a920d8
     </>
   )
 }
