@@ -43,11 +43,11 @@ function VideoCard({displayData,setDeleteVideoResponse,insideCategory}) {
   return (
     <>
     
-    <Card draggable="true" onDragStart={(e)=>dragStarted(e,displayData?.id)} className='shadow'>
+    <Card draggable="true" onDragStart={(e)=>dragStarted(e,displayData?.id)} style={{width:'230px'}} className='shadow '>
     <Card.Img style={{cursor:'pionter',minHeight:'150px',maxHeight:'150px'}} onClick={handleShow} variant="top" src={displayData?.imageURL} />
     <Card.Body>
       <Card.Title className='d-flex justify-content-between '>
-      <p className="fw-2 ">{displayData?.caption}</p>
+      <p className="fw-1 ">{displayData?.caption}</p>
     {!insideCategory&&  <button onClick={()=>removeVideo(displayData.id)} className='btn '><i className='fa-solid fa-trash text-danger'></i></button>}
       </Card.Title>
       
